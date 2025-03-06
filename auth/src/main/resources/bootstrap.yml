@@ -5,7 +5,7 @@ spring:
     active: local
   cloud:
     config:
-      uri: http://localhost:19009  # Config Server URL
+      uri: http://localhost:8888  # Config Server URL
       label: main  # 사용할 브랜치, 필요시 변경
   config:
-    import: "optional:configserver:http://localhost:19009"
+    import: "optional:configserver:http://localhost:8888"
