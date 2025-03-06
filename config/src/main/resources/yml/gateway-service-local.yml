@@ -1,0 +1,15 @@
+server:
+  port: 19012
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
+  config:
+    import:
+      - classpath:/config/jwt.yml
+      - classpath:/config/eureka.yml
+      - classpath:/config/gateway.yml  # Gateway 설정 분리
+
+message: "gateway-server-local Message"
