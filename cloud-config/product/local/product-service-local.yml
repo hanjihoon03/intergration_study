@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: auth-service
+  config:
+    import:
+      - classpath:/config/database.yml
+      - classpath:/config/jwt.yml
+      - classpath:/config/eureka.yml
+      - classpath:/config/zipkin.yml
+
+  datasource:
+    url: ${spring.datasource.url.${spring.application.name}}
+  jpa:
+    hibernate:
+      ddl-auto: ${spring.jpa.hibernate.ddl-auto.${spring.application.name}}
+
+server:
+  port: 19013
+
+message: "product-server-local Message"
