@@ -1,0 +1,13 @@
+server:
+  port: 19009
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/yml  # 리소스 폴더의 디렉토리 경로
