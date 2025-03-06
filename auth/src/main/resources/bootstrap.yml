@@ -9,9 +9,3 @@ spring:
       label: main  # 사용할 브랜치, 필요시 변경
   config:
     import: "optional:configserver:http://localhost:19009"
-
-  datasource:
-    url: ${spring.datasource.url.${spring.application.name}}
-    username: ${spring.datasource.username.${spring.application.name}}
-    password: ${spring.datasource.password.${spring.application.name}}
-    driver-class-name: com.mysql.cj.jdbc.Driver
