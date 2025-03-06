@@ -1,9 +1,17 @@
 spring:
   application:
-    name: auth-service  # 서비스 이름, Config Server에서 해당 서비스의 설정을 찾을 때 사용
+    name: auth-service
+  profiles:
+    active: local
   cloud:
     config:
       uri: http://localhost:19009  # Config Server URL
       label: main  # 사용할 브랜치, 필요시 변경
   config:
     import: "optional:configserver:http://localhost:19009"
+
+  datasource:
+    url: ${spring.datasource.url.${spring.application.name}}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password.${spring.application.name}}
+    driver-class-name: com.mysql.cj.jdbc.Driver
