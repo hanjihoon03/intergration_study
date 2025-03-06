@@ -11,7 +11,6 @@ spring:
       server:
         git:
           uri: https://github.com/hanjihoon03/intergration_study  # Git 저장소 URL
-          clone-on-start: true  # 서버 시작 시 클론하도록 설정
           search-paths: cloud-config/**  # 설정 파일들이 위치한 디렉토리 이름 (필요한 경우)
           default-label: main  # Git 브랜치명
 
