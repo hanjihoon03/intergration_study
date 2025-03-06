@@ -1,6 +1,6 @@
 spring:
   application:
-    name: auth-service
+    name: product-service
   config:
     import:
       - classpath:/config/database.yml
