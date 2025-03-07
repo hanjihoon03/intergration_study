@@ -5,14 +5,8 @@ spring:
       auth-service: jdbc:mysql://localhost:3306/intergration_auth
       product-service: jdbc:mysql://localhost:3306/intergration_product
       order-service: jdbc:mysql://localhost:3306/intergration_order
-    username:
-      auth-service: root  # auth-service에 맞는 사용자명
-      product-service: root  # product-service에 맞는 사용자명
-      order-service: root  # order-service에 맞는 사용자명
-    password:
-      auth-service: raik1353  # auth-service에 맞는 비밀번호
-      product-service: raik1353  # product-service에 맞는 비밀번호
-      order-service: raik1353  # order-service에 맞는 비밀번호
+    username: root  
+    password: raik1353 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
