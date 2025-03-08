@@ -2,7 +2,7 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:mysql://localhost:3306/intergration_auth
+    url: jdbc:mysql://localhost:3306/intergration_order
     username: root
     password: raik1353
     driver-class-name: com.mysql.cj.jdbc.Driver
