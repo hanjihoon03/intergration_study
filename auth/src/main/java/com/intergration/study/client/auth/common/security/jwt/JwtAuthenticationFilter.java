@@ -68,9 +68,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String username = ((UserDetailsImpl) authResult.getPrincipal()).getUsername();
         UserRoleEnum role = ((UserDetailsImpl) authResult.getPrincipal()).getRole();
 
-
-
-
         String token = cacheRedis(username, role);
 
         response.addHeader(JwtTokenProvider.AUTHORIZATION_HEADER, token);
