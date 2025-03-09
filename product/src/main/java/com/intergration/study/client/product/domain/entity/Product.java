@@ -46,5 +46,18 @@ public class Product {
     }
 
 
+    //재고 차감
+    public void subtractQuantity(int orderQuantity) {
+        if (this.quantity < orderQuantity) {
+            throw new IllegalArgumentException("재고가 부족합니다. 현재 재고: " + this.quantity);
+        }
+        this.quantity -= orderQuantity;
+    }
+
+    //재고 증가
+    public void addQuantity(int orderQuantity) {
+        this.quantity += orderQuantity;
+    }
+
 
 }

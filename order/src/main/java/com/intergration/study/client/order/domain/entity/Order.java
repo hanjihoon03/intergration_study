@@ -1,7 +1,9 @@
 package com.intergration.study.client.order.domain.entity;
 
 import com.intergration.study.client.order.presentation.dto.OrderProductRequestDto;
+import com.intergration.study.client.order.presentation.dto.OrderProductRequestIds;
 import com.intergration.study.client.order.presentation.dto.OrderRequestDto;
+import com.intergration.study.client.order.presentation.dto.product.ProductResponseDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,20 +43,26 @@ public class Order {
     private List<OrderProduct> orderProductsList = new ArrayList<>();
 
 
-    public static Order from(OrderRequestDto orderRequestDto, List<OrderProduct> orderProductList, Long userId) {
+    public static Order from(OrderRequestDto orderRequestDto, List<ProductResponseDto> productResponseDtos, Long userId) {
         Order order = Order.builder()
             .userId(userId)
             .orderStatus(orderRequestDto.orderStatus())
             .orderRequest(orderRequestDto.orderRequest())
             .build();
 
-        orderProductList.forEach(order::addOrderProduct);
+        List<Integer> orderQuantityList = orderRequestDto.orderProductRequestIds().stream()
+            .map(OrderProductRequestIds::orderQuantity)
+            .toList();
+
+        for (int i = 0; i < productResponseDtos.size(); i++) {
+            order.addOrderProduct(productResponseDtos.get(i), orderQuantityList.get(i));
+        }
         return order;
     }
 
-    private void addOrderProduct(OrderProduct orderProduct) {
+    private void addOrderProduct(ProductResponseDto productResponseDto, Integer orderQuantity) {
+        OrderProduct orderProduct = OrderProduct.from(this, productResponseDto, orderQuantity);
         this.orderProductsList.add(orderProduct);
-        orderProduct.addOrder(this);
     }
 
 

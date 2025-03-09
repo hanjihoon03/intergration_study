@@ -1,5 +1,7 @@
 package com.intergration.study.client.order.domain.entity;
 
+import com.intergration.study.client.order.presentation.dto.OrderRequestDto;
+import com.intergration.study.client.order.presentation.dto.product.ProductResponseDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,6 +39,15 @@ public class OrderProduct {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    public static OrderProduct from(Order order,ProductResponseDto productResponseDto, Integer orderQuantity) {
+        return OrderProduct.builder()
+            .productId(productResponseDto.productId())
+            .productPrice(productResponseDto.productPrice())
+            .orderQuantity(orderQuantity)
+            .order(order)
+            .build();
+    }
 
     protected void addOrder(Order order) {
         this.order = order;

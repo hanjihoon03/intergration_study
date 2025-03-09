@@ -10,7 +10,7 @@ import lombok.Builder;
  */
 @Builder
 public record OrderRequestDto(
-    List<OrderProductRequestDto> orderProductRequestDtoList,
+    List<OrderProductRequestIds> orderProductRequestIds,
     Long userId,
     OrderStatus orderStatus,
     String orderRequest
