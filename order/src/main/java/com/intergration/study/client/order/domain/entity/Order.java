@@ -6,11 +6,14 @@ import com.intergration.study.client.order.presentation.dto.OrderRequestDto;
 import com.intergration.study.client.order.presentation.dto.product.ProductResponseDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
@@ -26,6 +29,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Builder
+@Table(name = "orders")
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
@@ -35,11 +39,13 @@ public class Order {
 
     private Long userId;
 
+    @Enumerated(value = EnumType.STRING)
     private OrderStatus orderStatus;
 
     private String orderRequest;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<OrderProduct> orderProductsList = new ArrayList<>();
 
 

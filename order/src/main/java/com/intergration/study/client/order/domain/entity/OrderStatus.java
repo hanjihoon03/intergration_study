@@ -1,9 +1,12 @@
 package com.intergration.study.client.order.domain.entity;
 
+import lombok.Getter;
+
 /**
  * @author : hanjihoon
  * @Date : 2025. 03. 09.
  */
+@Getter
 public enum OrderStatus {
     ORDER_PENDING(Description.ORDER_PENDING),
     ORDER_COMPLETED(Description.ORDER_COMPLETED),

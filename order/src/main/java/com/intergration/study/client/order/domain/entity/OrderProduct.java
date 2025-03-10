@@ -37,7 +37,7 @@ public class OrderProduct {
     private Integer orderQuantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "orders_id")
     private Order order;
 
     public static OrderProduct from(Order order,ProductResponseDto productResponseDto, Integer orderQuantity) {

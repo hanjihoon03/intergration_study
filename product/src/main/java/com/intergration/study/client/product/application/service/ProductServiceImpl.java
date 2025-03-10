@@ -88,7 +88,7 @@ public class ProductServiceImpl implements ProductService{
         List<Long> productIds = request.stream()
             .map(OrderProductRequestIds::productId)
             .toList();
-        List<Product> products = productRepository.findAllById(productIds);
+        List<Product> products = productRepository.findAllByIdIn(productIds);
 
         // 존재하지 않는 상품이 있는지 확인
         if (products.size() != productIds.size()) {
