@@ -1,5 +1,6 @@
-package com.intergration.study.client.product.application;
+package com.intergration.study.client.product.application.service;
 
+import com.intergration.study.client.product.presentation.dto.order.OrderProductRequestIds;
 import com.intergration.study.client.product.presentation.dto.ProductRequestDto;
 import com.intergration.study.client.product.presentation.dto.ProductResponseDto;
 import java.util.List;
@@ -19,4 +20,8 @@ public interface ProductService {
     ProductResponseDto updateProduct(Long productId, ProductRequestDto requestDto);
 
     void deleteProduct(Long productId);
+
+    List<ProductResponseDto> buy(List<OrderProductRequestIds> request);
+
+    void cancelOrder(List<OrderProductRequestIds> request);
 }
